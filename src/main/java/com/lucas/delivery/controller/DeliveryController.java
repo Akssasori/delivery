@@ -2,6 +2,7 @@ package com.lucas.delivery.controller;
 
 import com.lucas.delivery.model.Delivery;
 import com.lucas.delivery.service.DeliveryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +25,10 @@ public class DeliveryController {
     }
 
     @PostMapping("/save")
-    public String saveDelivery(Delivery delivery, RedirectAttributes attributes) {
+    public ResponseEntity<String> saveDelivery(@RequestBody Delivery delivery) {
         deliveryService.save(delivery);
-        attributes.addAttribute("message", "Entrega cadastrada com sucesso!");
-        return "redirect:/list";
+//        attributes.addAttribute("message", "Entrega cadastrada com sucesso!");
+        return ResponseEntity.ok("Entrega cadastrada com sucesso!");
     }
 
     @GetMapping("/list")
