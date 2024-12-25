@@ -51,27 +51,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function openConfirmationModal() {
-        // Capturar valores do formulário
-        const sector = document.getElementById('sector').value;
-        const enterprise = document.getElementById('enterprise').value;
-        const previewData = document.getElementById('previewData').value;
-
-        // Preencher os campos no modal
-        document.getElementById('confirmSector').textContent = sector;
-        document.getElementById('confirmEnterprise').textContent = enterprise;
-        document.getElementById('confirmPreviewData').textContent = previewData;
-
-        // Abrir o modal
-        const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-        confirmationModal.show();
-    }
-
-    function submitForm() {
-        // Submeter o formulário
-        document.getElementById('deliveryForm').submit();
-    }
-</script>
+<script src="/js/form.js"></script> <!-- Arquivo JavaScript externo -->
 </body>
 </html>
