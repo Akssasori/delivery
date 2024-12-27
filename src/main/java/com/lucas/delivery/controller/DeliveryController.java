@@ -1,7 +1,10 @@
 package com.lucas.delivery.controller;
 
+import com.lucas.delivery.dto.DeliveryRequestDTO;
+import com.lucas.delivery.enums.StatusEnum;
 import com.lucas.delivery.model.Delivery;
 import com.lucas.delivery.service.DeliveryService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +28,8 @@ public class DeliveryController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> saveDelivery(@RequestBody Delivery delivery) {
+    public ResponseEntity<String> saveDelivery(@RequestBody @Valid DeliveryRequestDTO delivery) {
         deliveryService.save(delivery);
-//        attributes.addAttribute("message", "Entrega cadastrada com sucesso!");
         return ResponseEntity.ok("Entrega cadastrada com sucesso!");
     }
 
@@ -38,7 +40,7 @@ public class DeliveryController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateStatus(@PathVariable Long id, @RequestParam("status") Delivery.Status status) {
+    public String updateStatus(@PathVariable Long id, @RequestParam("status") StatusEnum status) {
         deliveryService.updateStatus(id, status);
         return "redirect:/list";
     }
