@@ -17,6 +17,14 @@
             <input type="text" name="enterprise" id="enterprise" class="form-control" placeholder="Digite a empresa" required>
         </div>
         <div class="col-md-6">
+            <label for="recipientName" class="form-label">Destinatário</label>
+            <input type="text" name="recipientName" id="recipientName" class="form-control" placeholder="Digite o nome do destinatário" required>
+        </div>
+        <div class="col-md-6">
+            <label for="deliveryCode" class="form-label">Código da entrega</label>
+            <input type="text" name="deliveryCode" id="deliveryCode" class="form-control" placeholder="Digite o código caso necessário" required>
+        </div>
+        <div class="col-md-6">
             <label for="previewData" class="form-label">Data Estimada de Entrega</label>
             <input type="date" name="previewData" id="previewData" class="form-control" required>
         </div>
@@ -39,6 +47,8 @@
                 <ul>
                     <li><strong>Setor:</strong> <span id="confirmSector"></span></li>
                     <li><strong>Empresa:</strong> <span id="confirmEnterprise"></span></li>
+                    <li><strong>Destinatário:</strong> <span id="confirmRecipientName"></span></li>
+                    <li><strong>Código da Entrega:</strong> <span id="confirmDeliveryCode"></span></li>
                     <li><strong>Data Possível:</strong> <span id="confirmPreviewData"></span></li>
                 </ul>
             </div>
