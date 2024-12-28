@@ -15,6 +15,8 @@
             <th>ID</th>
             <th>Setor</th>
             <th>Empresa</th>
+            <th>Destinatário</th>
+            <th>Código da entrega</th>
             <th>Data Possível</th>
             <th>Status</th>
             <th>Ações</th>
@@ -25,6 +27,8 @@
             <td th:text="${delivery.id}"></td>
             <td th:text="${delivery.sector}"></td>
             <td th:text="${delivery.enterprise}"></td>
+            <td th:text="${delivery.recipientName}"></td>
+            <td th:text="${delivery.deliveryCode}"></td>
             <td th:text="${delivery.previewData}"></td>
             <td th:text="${delivery.status}"></td>
             <td>
