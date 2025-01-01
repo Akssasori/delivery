@@ -19,6 +19,7 @@
             <th>Código da entrega</th>
             <th>Data Possível</th>
             <th>Status</th>
+            <th>Data e hora da entrega</th>
             <th>Ações</th>
         </tr>
         </thead>
@@ -31,6 +32,7 @@
             <td th:text="${delivery.deliveryCode}"></td>
             <td th:text="${delivery.previewData}"></td>
             <td th:text="${delivery.status}"></td>
+            <td th:text="${delivery.deliveredIn}"></td>
             <td>
                 <form th:action="@{'/update/' + ${delivery.id}}" method="post" class="d-flex align-items-center">
                     <select name="status" class="form-select me-2">
@@ -44,6 +46,25 @@
         </tbody>
     </table>
 </div>
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <span>Página <span th:text="${currentPage + 1}"></span> de <span th:text="${totalPages}"></span></span>
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                <a class="page-link" th:href="@{'/list?page=' + (${currentPage - 1}) + '&size=10'}">Anterior</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? 'active'">
+                <a class="page-link" th:href="@{'/list?page=' + ${i} + '&size=10'}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                <a class="page-link" th:href="@{'/list?page=' + (${currentPage + 1}) + '&size=10'}">Próximo</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
 
 <!-- Script do Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

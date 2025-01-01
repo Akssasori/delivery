@@ -1,5 +1,6 @@
 package com.lucas.delivery.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lucas.delivery.enums.StatusEnum;
 import jakarta.persistence.*;
 
@@ -7,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "delivery")
 public class Delivery {
 
     @Id

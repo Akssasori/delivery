@@ -5,7 +5,10 @@ import com.lucas.delivery.enums.StatusEnum;
 import com.lucas.delivery.model.Delivery;
 import com.lucas.delivery.repository.DeliveryRepository;
 import com.lucas.delivery.service.DeliveryService;
+import com.lucas.delivery.util.DateTimeConvert;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,8 +24,8 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
-    public List<Delivery> findAll() {
-        return deliveryRepository.findAll();
+    public Page<Delivery> findAll(Pageable pageable) {
+        return deliveryRepository.findAll(pageable);
     }
 
     @Override
@@ -40,11 +43,15 @@ public class DeliveryServiceImpl implements DeliveryService {
     public void updateStatus(Long id, StatusEnum status) {
         Delivery delivery = deliveryRepository.findById(id).orElseThrow(() -> new RuntimeException("Item não encontrado"));
         delivery.setStatus(status);
+        delivery.setDeliveredIn(DateTimeConvert.nowLocalDateTimeBrazil());
         if (status == StatusEnum.ENTREGUE) {
             delivery.setDeliveredIn(LocalDateTime.now());
         }
+
+        if (status == StatusEnum.PENDENTE){
+            delivery.setDeliveredIn(null);
+        }
         deliveryRepository.save(delivery);
     }
-
 
 }
